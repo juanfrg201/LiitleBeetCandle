@@ -31,6 +31,8 @@ gem "redis", ">= 4.0.1"
 
 gem 'bulma-rails'
 
+gem "image_processing", ">= 1.2"
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
