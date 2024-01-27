@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :edit, :update, :show]
   resources :sessions, only: [:new, :create, :destroy]
   resources :products, only: [:index, :new, :create]
-  resources :sales, only: [:new, :create]
+  resources :sales, only: [:new, :create, :show]
   resources :admin_dahsboard, only: [:index]
 
 end

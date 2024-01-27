@@ -14,6 +14,7 @@ module Services
       if @sale 
         if create_sale_items
           update_sale
+          @sale
         end
       end
     end

@@ -1,5 +1,7 @@
 class SalesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_products, only: [:new]
+  before_action :set_product, only: [:show]
 
 
   def new 
@@ -9,14 +11,18 @@ class SalesController < ApplicationController
   end
 
   def create
-    sales = Services::Sale.new(current_user, JSON.parse(params[:products]))
-    if sales.perform
-      flash[:notice] = 'Se genero el registrode venta'
-      redirect_to root_path
+    sale = Services::Sale.new(current_user, JSON.parse(params[:products]))
+    if sale.perform.present?
+      flash[:notice] = 'Se genero el registro de venta'
+      redirect_to sale_path(sale.instance_variable_get(:@sale).id)
     else
       flash[:error] = 'Error al generar el registro'
       redirect_to root_path
     end
+  end
+
+  def show 
+    @sale_items = @sale.sale_items
   end
 
   private 
@@ -31,5 +37,9 @@ class SalesController < ApplicationController
       product = Product.find(product_id)
       { product: product, quantity: quantity.to_i } # Convertimos la cantidad a entero
     end
+  end
+
+  def set_product 
+    @sale = Sale.find(params[:id])
   end
 end

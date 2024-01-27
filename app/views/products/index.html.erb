@@ -1,15 +1,22 @@
 <!-- app/views/products/index.html.erb -->
 <section class="section">
   <div class="container">
-    <div class="field">
-      <label class="label">Filtrar por categoría:</label>
+    <div class="field is-grouped is-grouped-multiline">
       <div class="control">
+        <label class="label">Filtrar por categoría:</label>
         <div class="select">
           <select id="filterSelect">
             <option value="all">Todos</option>
-            <!-- Agrega aquí opciones de categoría según tus necesidades -->
           </select>
         </div>
+      </div>
+      <div class="control is-expanded has-text-right">
+        <button class="button is-medium" onclick="saveIds()">
+          <span class="icon">
+            <i class="fas fa-shopping-cart"></i>
+          </span>
+          <p id="cartCount" class="is-warning is-light">0</p>
+        </button>
       </div>
     </div>
 

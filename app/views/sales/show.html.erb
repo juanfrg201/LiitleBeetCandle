@@ -3,19 +3,19 @@
     <h1 class="title">Realiza el Registro</h1>
 
     <div class="columns is-multiline" id="productDetails">
-      <% @products.each do |product_info| %>
+      <% @sale_items.each do |sale_item| %>
         <div class="column is-one-third">
           <div class="card">
             <div class="card-image">
               <figure class="image is-4by3">
-                <%= image_tag(product_info[:product].image, class: "product-image") %>
+                <%= image_tag(sale_item.product.image, class: "product-image") %>
               </figure>
             </div>
             <div class="card-content">
-              <p class="title is-4"><%= product_info[:product].name %></p>
-              <p><%= product_info[:product].description %></p>
-              <p class="subtitle is-6">Precio: <%= number_to_currency(product_info[:product].price) %></p>
-              <p>Cantidad: <%= product_info[:quantity] %></p>
+              <p class="title is-4"><%= sale_item.product.name %></p>
+              <p><%= sale_item.product.description %></p>
+              <p class="subtitle is-6">Precio: <%= number_to_currency(sale_item.product.price) %></p>
+              <p>Cantidad: <%= sale_item.quantity %></p>
             </div>
           </div>
         </div>
@@ -27,7 +27,7 @@
         <div class="field">
           <label class="label">Total de la Compra:</label>
           <div class="control">
-            <p class="title is-4"><%= @total_cost %></p>
+            <p class="title is-4"><%= @sale.total %></p>
           </div>
         </div>
       </div>
@@ -37,7 +37,7 @@
       <div class="field">
         <div class="control">
           <%= f.hidden_field :products, value: @product_info.to_json %>
-          <%= f.submit  "Pagar" , class: "button is-success" %>
+          <%= f.submit  "Descargar PDF" , class: "button is-success" %>
         </div>
       </div>
     <% end %>

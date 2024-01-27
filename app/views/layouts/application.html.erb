@@ -67,18 +67,6 @@
               <%= link_to 'Productos', products_path, class: 'navbar-item' %>
             </div>
             <div class="navbar-end is-half">
-              <% if params[:controller] == 'products' && params[:action] == 'index' %>
-                <div class="navbar-item">
-                  <div class="buttons">
-                    <button class="button is-medium" onclick="saveIds()">
-                      <span class="icon">
-                        <i class="fas fa-shopping-cart"></i>
-                      </span>
-                      <span id="cartCount" class="tag is-warning is-light">0</span>
-                    </button>
-                  </div>
-                </div>
-              <% end %>
               <div class="navbar-item">
                 <%= form_with(url: session_path(current_user.id), method: :delete, class: "button is-medium") do |form| %>
                   <%= form.submit "Cerrar Sesión", class: "" %>
