@@ -18,10 +18,10 @@
 
   <body>
     <% if current_user %>
-      <nav class="navbar is-warning" role="navigation" aria-label="main navigation">
+      <nav class="navbar is-warning " role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <%= link_to root_path, class: 'navbar-item' do %>
-            SpoHealApp
+            LittleBees
           <% end %>
 
           <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
@@ -33,9 +33,9 @@
 
         <div id="navbarMenu" class="navbar-menu">
           <div class="navbar-start is-half">
+            <%= link_to 'Menu', root_path, class: 'navbar-item' %>
             <%= link_to 'Perfil', root_path, class: 'navbar-item' %>
             <%= link_to 'Productos', products_path, class: 'navbar-item' %>
-            <%= link_to 'Contacto', root_path, class: 'navbar-item' %>
           </div>
           <% if params[:controller] == 'products' && params[:action] == 'index' %>
             <div class="navbar-end is-half">
@@ -51,18 +51,14 @@
               </div>
             </div>
           <% end %>
-
-
-
-  
         </div>
       </nav>
 
     <% else %>
-      av class="navbar is-success" role="navigation" aria-label="main navigation">
+      <nav class="navbar is-warning" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <%= link_to root_path, class: 'navbar-item' do %>
-            SpoHealApp
+            LittleBees
           <% end %>
 
           <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">

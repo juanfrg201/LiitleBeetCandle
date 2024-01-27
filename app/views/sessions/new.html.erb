@@ -2,21 +2,21 @@
   <div class="card box has-shadow-8" style="width: 30%;">
     <div class="card-content">
       <div class="content has-text-centered">
-        <p class="title is-4 has-text-success">Inicio de Sesión</p>
+        <p class="title is-4">Inicio de Sesión</p>
       </div>
 
       <%= form_with(url: sessions_path, method: :post) do |f| %>
         <div class="field">
           <%= f.label :email, 'Email', class: 'label' %>
           <div class="control is-expanded">
-            <%= f.text_field :email, class: 'input is-success', required: true %>
+            <%= f.text_field :email, class: 'input is-warning', required: true %>
           </div>
         </div>
 
         <div class="field">
           <%= f.label :password, 'Contraseña', class: 'label' %>
           <div class="control is-expanded">
-            <%= f.password_field :password, class: 'input is-success', required: true %>
+            <%= f.password_field :password, class: 'input is-warning', required: true %>
           </div>
         </div>
 
