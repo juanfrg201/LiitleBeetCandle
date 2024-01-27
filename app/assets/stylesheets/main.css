@@ -30,3 +30,18 @@
     border-color: #007BFF;
   }
 }
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 75%; /* Este valor ajusta la proporción de la imagen */
+}
+
+.product-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

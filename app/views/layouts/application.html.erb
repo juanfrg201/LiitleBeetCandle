@@ -18,41 +18,77 @@
 
   <body>
     <% if current_user %>
-      <nav class="navbar is-warning " role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-          <%= link_to root_path, class: 'navbar-item' do %>
-            LittleBees
-          <% end %>
+      <% if current_user.has_role?(:admin) %>
+        <nav class="navbar is-warning " role="navigation" aria-label="main navigation">
+          <div class="navbar-brand">
+            <%= link_to admin_dahsboard_index_path, class: 'navbar-item' do %>
+              LittleBees Admin
+            <% end %>
 
-          <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-
-        <div id="navbarMenu" class="navbar-menu">
-          <div class="navbar-start is-half">
-            <%= link_to 'Menu', root_path, class: 'navbar-item' %>
-            <%= link_to 'Perfil', root_path, class: 'navbar-item' %>
-            <%= link_to 'Productos', products_path, class: 'navbar-item' %>
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
           </div>
-          <% if params[:controller] == 'products' && params[:action] == 'index' %>
+
+          <div id="navbarMenu" class="navbar-menu">
+            <div class="navbar-start is-half">
+              <%= link_to 'Menu', admin_dahsboard_index_path, class: 'navbar-item' %>
+              <%= link_to 'Agregar productos', new_product_path, class: 'navbar-item' %>
+            </div>
             <div class="navbar-end is-half">
               <div class="navbar-item">
-                <div class="buttons">
-                  <button class="button is-medium" onclick="saveIds()">
-                    <span class="icon">
-                      <i class="fas fa-shopping-cart"></i>
-                    </span>
-                    <span id="cartCount" class="tag is-warning is-light">0</span>
-                  </button>
-                </div>
+                <%= form_with(url: session_path(current_user.id), method: :delete, class: "button is-medium") do |form| %>
+                  <%= form.submit "Cerrar Sesión", class: "button is-danger" %>
+                <% end %>
               </div>
             </div>
-          <% end %>
-        </div>
-      </nav>
+          </div>
+        </nav>
+      <% else %>
+
+        <nav class="navbar is-warning " role="navigation" aria-label="main navigation">
+          <div class="navbar-brand">
+            <%= link_to root_path, class: 'navbar-item' do %>
+              LittleBees
+            <% end %>
+
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+
+          <div id="navbarMenu" class="navbar-menu">
+            <div class="navbar-start is-half">
+              <%= link_to 'Menu', root_path, class: 'navbar-item' %>
+              <%= link_to 'Perfil', root_path, class: 'navbar-item' %>
+              <%= link_to 'Productos', products_path, class: 'navbar-item' %>
+            </div>
+            <div class="navbar-end is-half">
+              <% if params[:controller] == 'products' && params[:action] == 'index' %>
+                <div class="navbar-item">
+                  <div class="buttons">
+                    <button class="button is-medium" onclick="saveIds()">
+                      <span class="icon">
+                        <i class="fas fa-shopping-cart"></i>
+                      </span>
+                      <span id="cartCount" class="tag is-warning is-light">0</span>
+                    </button>
+                  </div>
+                </div>
+              <% end %>
+              <div class="navbar-item">
+                <%= form_with(url: session_path(current_user.id), method: :delete, class: "button is-medium") do |form| %>
+                  <%= form.submit "Cerrar Sesión", class: "" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+      <% end %>
 
     <% else %>
       <nav class="navbar is-warning" role="navigation" aria-label="main navigation">

@@ -13,39 +13,14 @@
       </div>
     </div>
 
-    <div class="columns is-multiline" id="productCards">
-      <% @products.each do |product| %>
-        <div class="column is-one-third">
-          <div class="card">
-            <div class="card-image">
-              <figure class="image is-4by3">
-                <img src="<%= product.image %>" alt="<%= product.name %>">
-              </figure>
-            </div>
-            <div class="card-content">
-              <p class="title is-4"><%= product.name %></p>
-              <p><%= product.description %></p>
-              <p class="subtitle is-6">Precio: <%= number_to_currency(product.price) %></p>
-            </div>
-            <div class="card-footer">
-              <!-- Campo de cantidad con margen inferior -->
-              <div class="field is-flex" style="margin-bottom: 1em; align-items: flex-start;">
-                <div class="control" style="margin-right: 10px;">
-                  <input class="input is-small" type="number" id="quantity_<%= product.id %>" value="1" min="1" max="100">
-                </div>
-                <button class="button is-warning" style="width: 150px;" onclick="ids(<%= product.id %>, <%= product.price %>)">
-                  Agregar
-                </button>
-              </div>     
-            </div>
-          </div>
-        </div>
-      <% end %>
+    <div class="pagination" role="navigation" aria-label="pagination">
+      <%= will_paginate @products %>
     </div>
 
-    <!-- Área para mostrar productos seleccionados -->
-    <div id="selectedProducts">
-      <!-- Aquí se mostrarán los productos seleccionados -->
+    <div class="columns is-multiline" id="productCards">
+      <% @products.each do |product| %>
+        <%= render "product_post" , product: product %>
+      <% end %>
     </div>
   </div>
 </section>

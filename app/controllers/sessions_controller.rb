@@ -8,7 +8,12 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to products_path, notice: 'Inicio de sesión exitoso.'
+      if user.has_role?(:admin)
+        redirect_to admin_dahsboard_index_path, notice: 'Inicio de sesión exitoso. Admin'
+      else
+        redirect_to products_path, notice: 'Inicio de sesión exitoso.'
+      end
+      
     else
       flash[:error] = 'Usuario no encontrado, por favor registrate'
       redirect_to root_path

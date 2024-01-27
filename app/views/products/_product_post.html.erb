@@ -1,0 +1,25 @@
+<div class="column is-one-third">
+  <div class="card">
+    <div class="card-image">
+      <div class="image-container">
+        <%= image_tag(product.image, class: "product-image") %>
+      </div>
+    </div>
+    <div class="card-content">
+      <p class="title is-4"><%= product.name %></p>
+      <p><%= product.description %></p>
+      <p class="subtitle is-6">Precio: <%= number_to_currency(product.price) %></p>
+    </div>
+    <div class="card-footer">
+      <!-- Campo de cantidad con margen inferior -->
+      <div class="field is-flex" style="margin-bottom: 1em; align-items: flex-start;">
+        <div class="control" style="margin-right: 10px;">
+          <input class="input is-small" type="number" id="quantity_<%= product.id %>" value="1" min="1" max="100">
+        </div>
+        <button class="button is-warning" style="width: 150px;" onclick="ids(<%= product.id %>, <%= product.price %>)">
+          Agregar
+        </button>
+      </div>     
+    </div>
+  </div>
+</div>

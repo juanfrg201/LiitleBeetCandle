@@ -1,0 +1,18 @@
+<table class="table is-fullwidth is-centered">
+  <thead>
+    <tr>
+      <th>Fecha de venta</th>
+      <th>Usuario</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sales.each do |sale| %>
+      <tr>
+        <td><%= sale.name %></td>
+        <td><%= sale.user.email %></td>
+        <td><%= sale.total %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

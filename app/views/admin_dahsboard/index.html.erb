@@ -1,0 +1,71 @@
+<section class="hero is-success welcome is-small">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                Hola, <%= current_user.name %>
+            </h1>
+            <h2 class="subtitle">
+                Bienvenido al panel administrador
+            </h2>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h1 class="title">Panel de Administración</h1>
+    <section class="info-tiles">
+      <div class="tile is-ancestor has-text-centered">
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+              <p class="title"><%= @users.count %></p>
+              <p class="subtitle">Usuarios</p>
+          </article>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+              <p class="title"><%= @products.count %></p>
+              <p class="subtitle">Productos</p>
+          </article>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+              <p class="title"><%= @sales.count %></p>
+              <p class="subtitle">Ventas</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="container mt-5">
+    <div class="card" >
+      <div class="card-content is-fullwidth">
+        <h3 class="title">Usuarios</h3>
+        <%= render "user_table" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5">
+    <div class="columns">
+      <div class="column">
+        <div class="card" >
+          <div class="card-content is-fullwidth">
+            <h3 class="title">Productos</h3>
+            <%= render "product_table" %>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="card" >
+          <div class="card-content is-fullwidth">
+            <h3 class="title">Ventas</h3>
+            <%= render "sales_table" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+

@@ -1,0 +1,10 @@
+<!-- app/views/products/new.html.erb -->
+<section class="section">
+  <div class="container">
+    <h1 class="title">Agregar Nuevo Producto</h1>
+
+    <%= render 'form', product: @product %>
+
+    <%= link_to 'Volver', products_path, class: 'button is-link' %>
+  </div>
+</section>
