@@ -37,18 +37,21 @@
             <%= link_to 'Productos', products_path, class: 'navbar-item' %>
             <%= link_to 'Contacto', root_path, class: 'navbar-item' %>
           </div>
-          <div class="navbar-end is-half">
-            <div class="navbar-item">
-              <div class="buttons">
-                <button class="button is-medium" onclick="saveIds()">
-                  <span class="icon">
-                    <i class="fas fa-shopping-cart"></i>
-                  </span>
-                  <span id="cartCount" class="tag is-warning is-light">0</span>
-                </button>
+          <% if params[:controller] == 'products' && params[:action] == 'index' %>
+            <div class="navbar-end is-half">
+              <div class="navbar-item">
+                <div class="buttons">
+                  <button class="button is-medium" onclick="saveIds()">
+                    <span class="icon">
+                      <i class="fas fa-shopping-cart"></i>
+                    </span>
+                    <span id="cartCount" class="tag is-warning is-light">0</span>
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
+          <% end %>
+
 
 
   

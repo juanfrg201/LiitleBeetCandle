@@ -5,4 +5,5 @@ class Sale < ApplicationRecord
   validates :sale_date, presence: true 
   validates :user_id, presence: true 
   
+
 end
