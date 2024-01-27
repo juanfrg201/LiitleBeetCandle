@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to home_pages_path, notice: 'Inicio de sesión exitoso.'
+      redirect_to products_path, notice: 'Inicio de sesión exitoso.'
     else
       flash[:error] = 'Usuario no encontrado, por favor registrate'
       redirect_to root_path
@@ -24,6 +24,6 @@ class SessionsController < ApplicationController
   private
 
   def redirect_if_logged_in
-    redirect_to home_pages_path if current_user
+    redirect_to products_path if current_user
   end
 end

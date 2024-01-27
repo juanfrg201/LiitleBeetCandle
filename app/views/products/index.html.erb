@@ -1,2 +1,49 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<!-- app/views/products/index.html.erb -->
+<section class="section">
+  <div class="container">
+    <div class="field">
+      <label class="label">Filtrar por categoría:</label>
+      <div class="control">
+        <div class="select">
+          <select id="filterSelect">
+            <option value="all">Todos</option>
+            <!-- Agrega aquí opciones de categoría según tus necesidades -->
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-multiline" id="productCards">
+      <% @products.each do |product| %>
+        <div class="column is-one-third">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img src="<%= product.image %>" alt="<%= product.name %>">
+              </figure>
+            </div>
+            <div class="card-content">
+              <p class="title is-4"><%= product.name %></p>
+              <p><%= product.description %></p>
+              <p class="subtitle is-6">Precio: <%= number_to_currency(product.price) %></p>
+            </div>
+            <div class="card-footer">
+              <!-- Agrega campos para cantidad -->
+              <input type="number" id="quantity_<%= product.id %>" value="1" min="1" max="100">
+              
+              <!-- Botón "Agregar" con atributo data-product-id -->
+              <button class="button is-primary is-fullwidth" onclick="ids(<%= product.id %>, <%= product.price %>)">
+                Agregar
+              </button>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Área para mostrar productos seleccionados -->
+    <div id="selectedProducts">
+      <!-- Aquí se mostrarán los productos seleccionados -->
+    </div>
+  </div>
+</section>

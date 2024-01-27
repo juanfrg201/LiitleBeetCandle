@@ -10,14 +10,14 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
       if @user.save
         session[:user_id] = @user.id
-        redirect_to new_user_user_parametrization_path(user_id: @user.id)
+        redirect_to products_path
       else
-        flash[:error] = 'Usuario no encontrado'
+        flash[:error] = 'El usuario no se pudo registrar valide todos los campos'
         redirect_to root_path
       end
     else
       session[:user_id] = nil
-      flash[:error] = 'Error al crear el usuario'
+      flash[:error] = 'Usuario ya registrado'
       redirect_to root_path
     end
   end
