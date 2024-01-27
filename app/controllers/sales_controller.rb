@@ -1,10 +1,22 @@
 class SalesController < ApplicationController
   before_action :set_products, only: [:new]
+
+
   def new 
+    @total_cost = @products.sum { |product_info| product_info[:product].price * product_info[:quantity] }
+    @product_info = @products.map { |product_info| [product_info[:product].id,  product_info[:quantity]] }
     
   end
 
   def create
+    sales = Services::Sale.new(current_user, JSON.parse(params[:products]))
+    if sales.perform
+      flash[:notice] = 'Se genero el registrode venta'
+      redirect_to root_path
+    else
+      flash[:error] = 'Error al generar el registro'
+      redirect_to root_path
+    end
   end
 
   private 

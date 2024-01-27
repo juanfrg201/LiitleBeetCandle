@@ -35,6 +35,8 @@ gem 'will_paginate'
 
 gem "image_processing", ">= 1.2"
 
+gem 'bigdecimal'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 

@@ -23,17 +23,25 @@
       <% end %>
     </div>
 
-    <div class="field">
-      <label class="label">Total de la Compra:</label>
-      <div class="control">
-        <p class="title is-4"><%= number_to_currency(@total_price) %></p>
+    <div class="card box has-shadow-8" style="width: 25%;">
+      <div class="card-content">
+        <div class="field">
+          <label class="label">Total de la Compra:</label>
+          <div class="control">
+            <p class="title is-4"><%= @total_cost %></p>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="field">
-      <label class="label">Información de Pago:</label>
-      <!-- Agrega aquí campos para la información de pago, como tarjeta de crédito, dirección, etc. -->
-    </div>
+    <%= form_with(url: sales_path, method: :post) do |f| %>
+      <div class="field">
+        <div class="control">
+          <%= f.hidden_field :products, value: @product_info.to_json %>
+          <%= f.submit  "Pagar" , class: "button is-success" %>
+        </div>
+      </div>
+    <% end %>
 
   </div>
 </section>
