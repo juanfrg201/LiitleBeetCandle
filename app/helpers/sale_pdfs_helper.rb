@@ -1,0 +1,2 @@
+module SalePdfsHelper
+end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "salepdf/:id", to: "sale_pdfs#salepdf", as: 'salepdf'
   root 'sessions#new'
   resources :users, only: [:new, :create, :edit, :update, :show]
   resources :sessions, only: [:new, :create, :destroy]

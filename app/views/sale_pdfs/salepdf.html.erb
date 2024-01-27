@@ -1,0 +1,30 @@
+<h1 class="title">Detalle de Venta</h1>
+
+<div class="user-info">
+<p><strong>Nombre del Cliente:</strong> <%= @sale.user.name %> <%= @sale.user.last_name %></p>
+<p><strong>Email del Cliente:</strong> <%= @sale.user.email %></p>
+</div>
+
+<table class="product-list">
+<thead>
+    <tr>
+    <th>Producto</th>
+    <th>Cantidad</th>
+    <th>Precio Unitario</th>
+    <th>Subtotal</th>
+    </tr>
+</thead>
+<tbody>
+    <% @sale.sale_items.each do |item| %>
+    <tr>
+        <td><%= item.product.name %></td>
+        <td><%= item.quantity %></td>
+        <td><%= number_to_currency(item.product.price) %></td>
+        <td><%= number_to_currency(item.subtotal) %></td>
+    </tr>
+    <% end %>
+</tbody>
+</table>
+
+<p class="total"><strong>Total de la Venta:</strong> <%= number_to_currency(@sale.total) %></p>
+
