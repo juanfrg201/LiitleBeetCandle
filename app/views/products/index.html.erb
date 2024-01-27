@@ -28,13 +28,15 @@
               <p class="subtitle is-6">Precio: <%= number_to_currency(product.price) %></p>
             </div>
             <div class="card-footer">
-              <!-- Agrega campos para cantidad -->
-              <input type="number" id="quantity_<%= product.id %>" value="1" min="1" max="100">
-              
-              <!-- Botón "Agregar" con atributo data-product-id -->
-              <button class="button is-primary is-fullwidth" onclick="ids(<%= product.id %>, <%= product.price %>)">
-                Agregar
-              </button>
+              <!-- Campo de cantidad con margen inferior -->
+              <div class="field is-flex" style="margin-bottom: 1em; align-items: flex-start;">
+                <div class="control" style="margin-right: 10px;">
+                  <input class="input is-small" type="number" id="quantity_<%= product.id %>" value="1" min="1" max="100">
+                </div>
+                <button class="button is-warning" style="width: 150px;" onclick="ids(<%= product.id %>, <%= product.price %>)">
+                  Agregar
+                </button>
+              </div>     
             </div>
           </div>
         </div>
