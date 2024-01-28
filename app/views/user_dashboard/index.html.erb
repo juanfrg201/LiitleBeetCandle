@@ -1,0 +1,45 @@
+<section class="hero is-warning welcome is-small">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                Hola, <%= current_user.name %>
+            </h1>
+            <h2 class="subtitle">
+                Bienvenido
+            </h2>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h1 class="title">Panel Usuario</h1>
+  </div>
+  <div class="container mt-5">
+    <div class="card" >
+      <div class="card-content is-fullwidth">
+        <h3 class="title">Top productos</h3>
+        <%= render "rating_product_table" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5">
+    <div class="card" >
+      <div class="card-content is-fullwidth">
+        <h3 class="title">Total ventas</h3>
+        <section class="info-tiles">
+          <div class="tile is-ancestor has-text-centered">
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                  <p class="title"><%= @sales.count %></p>
+                  <p class="subtitle">Ventas totales</p>
+              </article>
+            </div>
+          </div>
+        </section>
+        <%= render "sales_table" %>
+      </div>
+    </div>
+  </div>
+</section>

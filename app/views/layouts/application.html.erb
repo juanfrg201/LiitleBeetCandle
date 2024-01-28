@@ -19,7 +19,7 @@
   <body>
     <% if current_user %>
       <% if current_user.has_role?(:admin) %>
-        <nav class="navbar is-warning " role="navigation" aria-label="main navigation">
+        <nav class="navbar" role="navigation" aria-label="main navigation" >
           <div class="navbar-brand">
             <%= link_to admin_dahsboard_index_path, class: 'navbar-item' do %>
               LittleBees Admin
@@ -46,11 +46,10 @@
           </div>
         </nav>
       <% else %>
-
-        <nav class="navbar is-warning " role="navigation" aria-label="main navigation">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
           <div class="navbar-brand">
             <%= link_to root_path, class: 'navbar-item' do %>
-              LittleBees
+              <%= image_tag('Logo.png', alt: 'LittleBees Logo', width: 112, height: 28) %>
             <% end %>
 
             <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
@@ -61,23 +60,21 @@
           </div>
 
           <div id="navbarMenu" class="navbar-menu">
-            <div class="navbar-start is-half">
-              <%= link_to 'Menu', root_path, class: 'navbar-item' %>
-              <%= link_to 'Perfil', root_path, class: 'navbar-item' %>
+            <div class="navbar-start">
+              <%= link_to 'Menu', user_dashboard_index_path, class: 'navbar-item' %>
               <%= link_to 'Productos', products_path, class: 'navbar-item' %>
             </div>
-            <div class="navbar-end is-half">
+
+            <div class="navbar-end">
               <div class="navbar-item">
-                <%= form_with(url: session_path(current_user.id), method: :delete, class: "button is-medium") do |form| %>
+                <%= form_with(url: session_path(current_user.id), method: :delete, class: "button is-light") do |form| %>
                   <%= form.submit "Cerrar Sesión", class: "" %>
                 <% end %>
               </div>
             </div>
           </div>
         </nav>
-
       <% end %>
-
     <% else %>
       <nav class="navbar is-warning" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">

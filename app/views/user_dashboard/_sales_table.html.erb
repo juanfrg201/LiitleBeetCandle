@@ -1,0 +1,22 @@
+<table class="table is-fullwidth is-centered">>
+  <thead>
+    <tr>
+      <th>Fecha de venta</th>
+      <th>Email</th>
+      <th>Total</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sales.each do |sale| %>
+      <tr>
+        <td><%= sale.sale_date %></td>
+        <td><%= sale.user.email %></td>
+        <td><%= sale.total %></td>
+        <td>
+          <%= link_to 'Ver Detalles', sale_path(sale), class: 'button is-warning' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

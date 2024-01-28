@@ -1,3 +1,7 @@
+.main-color{
+  background-color: #d1b61b;
+}
+
 .pagination {
   display: flex;
   justify-content: center;

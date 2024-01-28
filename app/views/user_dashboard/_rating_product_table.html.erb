@@ -1,0 +1,20 @@
+<table class="table is-fullwidth is-centered">>
+  <thead>
+    <tr>
+      <th>Nombre del Producto</th>
+      <th>Descripción</th>
+      <th>Precio Unitario</th>
+      <th>Cantidad de Ventas</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.description %></td>
+        <td><%= product.price %></td>
+        <td><%= product.sale_count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -10,7 +10,8 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
       if @user.save
         session[:user_id] = @user.id
-        redirect_to products_path
+        flash[:notice] = 'Bienvenido'
+        redirect_to user_dashboard_index_path
       else
         flash[:error] = 'El usuario no se pudo registrar valide todos los campos'
         redirect_to root_path

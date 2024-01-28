@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       if user.has_role?(:admin)
         redirect_to admin_dahsboard_index_path, notice: 'Inicio de sesión exitoso. Admin'
       else
-        redirect_to products_path, notice: 'Inicio de sesión exitoso.'
+        redirect_to user_dashboard_index_path, notice: 'Inicio de sesión exitoso.'
       end
       
     else
@@ -29,6 +29,6 @@ class SessionsController < ApplicationController
   private
 
   def redirect_if_logged_in
-    redirect_to products_path if current_user
+    redirect_to user_dashboard_index_path if current_user
   end
 end
