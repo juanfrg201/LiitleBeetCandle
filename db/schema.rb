@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_27_193458) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_28_233410) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,7 +72,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_27_193458) do
   end
 
   create_table "sales", force: :cascade do |t|
-    t.date "sale_date"
+    t.datetime "sale_date"
     t.decimal "total"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
