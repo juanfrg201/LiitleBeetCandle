@@ -28,3 +28,16 @@ h1 {
   font-weight: bold;
   text-align: right;
 }
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container {
+  margin-right: 20px; /* Ajusta el margen según sea necesario */
+}
+
+.logo-image {
+  max-width: 250px; /* Ajusta el tamaño de la imagen según sea necesario */
+}
