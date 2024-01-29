@@ -2,14 +2,16 @@
 <section class="section">
   <div class="container">
     <div class="field is-grouped is-grouped-multiline">
-      <div class="control">
-        <label class="label">Filtrar por categoría:</label>
-        <div class="select">
-          <select id="filterSelect">
-            <option value="all">Todos</option>
-          </select>
+      <%= form_with(url: products_path, method: :get, class: "mb-4", local: true) do |form| %>
+        <div class="field has-addons">
+          <div class="control is-expanded">
+            <%= form.text_field :search, placeholder: "Buscar por nombre", class: "input" %>
+          </div>
+          <div class="control">
+            <%= form.submit "Buscar", class: "button is-warning" %>
+          </div>
         </div>
-      </div>
+      <% end %>
       <div class="control is-expanded has-text-right">
         <button class="button is-medium" onclick="saveIds()">
           <span class="icon">

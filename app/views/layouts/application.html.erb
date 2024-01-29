@@ -10,19 +10,21 @@
     <%= stylesheet_link_tag "main", media: "all", "data-turbolinks-track": "reload" %>
     <%= javascript_include_tag 'cart' %>
     <%= javascript_importmap_tags %>
+    <%= favicon_link_tag asset_path('Logo.png') %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-XXX..." crossorigin="anonymous" />
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   </head>
 
   <body>
     <% if current_user %>
       <% if current_user.has_role?(:admin) %>
-        <nav class="navbar" role="navigation" aria-label="main navigation" >
-          <div class="navbar-brand">
+        <nav class="navbar" role="navigation" aria-label="main navigation" style="background-color: #d1b61b">
             <%= link_to admin_dahsboard_index_path, class: 'navbar-item' do %>
-              LittleBees Admin
+              <%= image_tag('Logo.png', alt: 'LittleBees Logo', width: 112, height: 28) %>
             <% end %>
 
             <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
@@ -33,12 +35,12 @@
 
           <div id="navbarMenu" class="navbar-menu">
             <div class="navbar-start is-half">
-              <%= link_to 'Menu', admin_dahsboard_index_path, class: 'navbar-item' %>
-              <%= link_to 'Agregar productos', new_product_path, class: 'navbar-item' %>
+              <%= link_to 'Inicio', admin_dahsboard_index_path, class: 'navbar-item item-hover' %>
+              <%= link_to 'Agregar productos', new_product_path, class: 'navbar-item item-hover' %>
             </div>
-            <div class="navbar-end is-half">
+            <div class="navbar-end">
               <div class="navbar-item">
-                <%= form_with(url: session_path(current_user.id), method: :delete, class: "button is-medium") do |form| %>
+                <%= form_with(url: session_path(current_user.id), method: :delete) do |form| %>
                   <%= form.submit "Cerrar Sesión", class: "button is-danger" %>
                 <% end %>
               </div>
@@ -46,7 +48,7 @@
           </div>
         </nav>
       <% else %>
-        <nav class="navbar" role="navigation" aria-label="main navigation">
+        <nav class="navbar" role="navigation" aria-label="main navigation" style="background-color: #d1b61b">
           <div class="navbar-brand">
             <%= link_to root_path, class: 'navbar-item' do %>
               <%= image_tag('Logo.png', alt: 'LittleBees Logo', width: 112, height: 28) %>
@@ -61,14 +63,14 @@
 
           <div id="navbarMenu" class="navbar-menu">
             <div class="navbar-start">
-              <%= link_to 'Menu', user_dashboard_index_path, class: 'navbar-item' %>
-              <%= link_to 'Productos', products_path, class: 'navbar-item' %>
+              <%= link_to 'Inicio', user_dashboard_index_path, class: 'navbar-item item-hover' %>
+              <%= link_to 'Productos', products_path, class: 'navbar-item item-hover' %>
             </div>
 
             <div class="navbar-end">
               <div class="navbar-item">
-                <%= form_with(url: session_path(current_user.id), method: :delete, class: "button is-light") do |form| %>
-                  <%= form.submit "Cerrar Sesión", class: "" %>
+                <%= form_with(url: session_path(current_user.id), method: :delete) do |form| %>
+                  <%= form.submit "Cerrar Sesión", class: "button is-light custom-hover" %>
                 <% end %>
               </div>
             </div>
@@ -76,10 +78,10 @@
         </nav>
       <% end %>
     <% else %>
-      <nav class="navbar is-warning" role="navigation" aria-label="main navigation">
+      <nav class="navbar" role="navigation" aria-label="main navigation" style="background-color: #d1b61b">
         <div class="navbar-brand">
           <%= link_to root_path, class: 'navbar-item' do %>
-            LittleBees
+            <%= image_tag('Logo.png', alt: 'LittleBees Logo', width: 112, height: 28) %>
           <% end %>
 
           <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
@@ -90,9 +92,10 @@
 
         <div id="navbarMenu" class="navbar-menu is-flex is-justify-content-center">
           <div class="navbar-end">
-            <!-- Agrega tus enlaces de navegación aquí -->
-            <%= link_to 'Iniciar Sesión', new_session_path, class: 'navbar-item' %>
-            <%= link_to 'Regístrate', new_user_path, class: 'navbar-item' %>
+            <div class="buttons">
+              <%= link_to 'Iniciar Sesión', new_session_path, class: 'button is-warning' %>
+              <%= link_to 'Regístrate', new_user_path, class: 'button is-light mr-2' %>
+            </div>
           </div>
         </div>
       </nav>
@@ -113,3 +116,14 @@
     <%= yield %>
   </body>
 </html>
+
+<style>
+  .custom-hover:hover {
+    background-color: red !important;
+    color: white !important;
+  }
+  .item-hover:hover {
+    background-color: white !important;
+    color: black !important;
+  }
+</style>

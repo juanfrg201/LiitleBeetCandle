@@ -5,31 +5,7 @@
         <p class="title is-4">Inicio de Sesión</p>
       </div>
 
-      <%= form_with(url: sessions_path, method: :post) do |f| %>
-        <div class="field">
-          <%= f.label :email, 'Email', class: 'label' %>
-          <div class="control is-expanded">
-            <%= f.text_field :email, class: 'input is-warning', required: true %>
-          </div>
-        </div>
-
-        <div class="field">
-          <%= f.label :password, 'Contraseña', class: 'label' %>
-          <div class="control is-expanded">
-            <%= f.password_field :password, class: 'input is-warning', required: true %>
-          </div>
-        </div>
-
-        <div class="field is-grouped">
-          <div class="control is-expanded">
-            <%= f.submit 'Iniciar Sesión', class: 'button is-success' %>
-          </div>
-        </div>
-
-        <div class="has-text-centered">
-          ¿No tienes una cuenta? <%= link_to 'Regístrate aquí', new_user_path, class: 'button is-primary' %>
-        </div>
-      <% end %>
+      <%= render "form" %>
 
       <% if flash[:alert] %>
         <div class="notification is-danger is-light has-text-centered" role="alert">

@@ -2,44 +2,10 @@
   <div class="card box has-shadow-8" style="width: 30%;">
     <div class="card-content">
       <div class="content has-text-centered">
-        <p class="title is-4 has-text-success">Registrate</p>
+        <p class="title is-4">Registrate</p>
       </div>
 
-      <%= form_with(model: @user, url: users_path, method: :post, local: true) do |form| %>
-        <div class="field">
-          <%= form.label :name, class: 'label' %>
-          <div class="control">
-            <%= form.text_field :name, class: 'input', required: true %>
-          </div>
-        </div>
-
-        <div class="field">
-          <%= form.label :last_name, class: 'label' %>
-          <div class="control">
-            <%= form.text_field :last_name, class: 'input', required: true %>
-          </div>
-        </div>
-
-        <div class="field">
-          <%= form.label :email, class: 'label' %>
-          <div class="control">
-            <%= form.email_field :email, class: 'input', required: true %>
-          </div>
-        </div>
-
-        <div class="field">
-          <%= form.label :password, class: 'label' %>
-          <div class="control">
-            <%= form.password_field :password, class: 'input', required: true %>
-          </div>
-        </div>
-
-        <div class="field is-grouped">
-          <div class="control">
-            <%= form.submit 'Registrar', class: 'button is-primary' %>
-          </div>
-        </div>
-      <% end %>
+      <%= render "form" %>
     </div>
   </div>
 </section>

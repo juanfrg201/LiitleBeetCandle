@@ -10,7 +10,7 @@
   <tbody>
     <% @sales.each do |sale| %>
       <tr>
-        <td><%= sale.sale_date %></td>
+        <td><%= sale.sale_date.to_date %></td>
         <td><%= sale.user.email %></td>
         <td><%= sale.total %></td>
         <td>

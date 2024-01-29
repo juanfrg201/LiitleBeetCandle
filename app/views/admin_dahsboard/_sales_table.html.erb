@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th>Fecha de venta</th>
+      <th>Hora de venta</th>
       <th>Usuario</th>
       <th>Total</th>
     </tr>
@@ -9,7 +10,8 @@
   <tbody>
     <% @sales.each do |sale| %>
       <tr>
-        <td><%= sale.name %></td>
+        <td><%= sale.sale_date.to_date %></td>
+        <td><%= sale.sale_time %></td>
         <td><%= sale.user.email %></td>
         <td><%= sale.total %></td>
       </tr>

@@ -4,7 +4,11 @@ class ProductsController < ApplicationController
   before_action :require_admin!, only: [:new, :create]
 
   def index
-    @products = Product.order(created_at: :desc).paginate(page: params[:page], per_page: 15)
+    @products = if params[:search]
+      Product.order(created_at: :desc).paginate(page: params[:page], per_page: 15).where('name LIKE ?', "%#{params[:search]}%")
+    else
+      Product.order(created_at: :desc).paginate(page: params[:page], per_page: 15)
+    end
     @new_value = params[:new_value].present? ? params[:new_value] : 0
   end
 
