@@ -13,7 +13,6 @@
       <p class="subtitle is-6">Precio: <%= number_to_currency(product.price) %></p>
     </div>
     <div class="card-footer">
-      <!-- Campo de cantidad con margen inferior -->
       <div class="field is-flex ml-5" style="margin-bottom: 1em; align-items: flex-start;">
         <div class="control" style="margin-right: 10px;">
           <input class="input is-small" type="number" id="quantity_<%= product.id %>" value="1" min="1" max="100">

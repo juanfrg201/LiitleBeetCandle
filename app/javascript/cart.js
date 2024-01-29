@@ -2,7 +2,6 @@ var selectedProducts = [];
 var selectedProductQuantities = {};
 
 function ids(productId, productPrice) {
-  // Obtener la cantidad desde el input correspondiente
   var quantityInput = document.getElementById('quantity_' + productId);
   var quantity = parseInt(quantityInput.value);
 
